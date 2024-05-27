@@ -12,7 +12,8 @@
 \usepackage{colonequals} % package for colon
 \usepackage{ifthen} % package for conditional branch
 \usepackage{bm, bbm} % package for bold style
-\usepackage{appendix}
+\usepackage{wrapfig} % package for figure of the text wrapping around
+\usepackage{appendix} % package for appendix
 
 
 \geometry{left=20truemm, right=20truemm, top=20truemm, bottom=20truemm}
@@ -106,10 +107,12 @@
 
   \newcommand{\fig}[3]{\begin{figure} \label{fig:#1} \centering \includegraphics[width=0.8\linewidth]{#2} \caption{#1} \center{#3}}
 
-  \newcommand{\eqnref}[1]{式~\eqref{eq:#1}}
-  \newcommand{\figreg}[1]{（図~\ref{fig:#1}）}
+  \newcommand{\eqnref}{\@ifstar{\seqnref}{\aeqnref}}
+    \newcommand{\seqnref}[1]{\eqref{eq:#1}}
+    \newcommand{\aeqnref}[1]{式~\eqref{eq:#1}}
+  \newcommand{\figref}[1]{（図~\ref{fig:#1}）}
   \ifthenelse{\isundefined{\chapter}}{}{
-    \newcommand{\chapref}[1]{（章~\ref{chap:#1}）}
+    \newcommand{\chapref}[1]{章~\ref{chap:#1}}
   }
   \newcommand{\secref}[1]{節~\ref{sec:#1}}
   \newcommand{\subsecref}[1]{小節~\ref{subsec:#1}}
