@@ -132,19 +132,21 @@
   \newcommand{\referthesis}[5]{\bibitem{#2} #1, \textit{#2}. #3, #4 (#5).} % arguments means 'author', 'title', 'type', 'publisher', 'year'
 
   \DeclareDocumentCommand\exp{}{\trigbraces{\exponential}}
-  \newcommand{\DeclareMathCommand}[3]{\DeclareMathOperator{#1}{#2} \DeclareDocumentCommand#3{}{\trigbraces{#1}}}
-    \DeclareMathCommand{\domain}{dom}{\dom}
-    \DeclareMathCommand{\grouporder}{ord}{\ord}
-    \DeclareMathCommand{\signum}{sign}{\sign}
-    \DeclareMathCommand{\sinecardinal}{sinc}{\sinc}
-    \DeclareMathCommand{\range}{range}{\ran}
-    \DeclareMathCommand{\Automorphism}{Aut}{\Aut}
-    \DeclareMathCommand{\Endomorphism}{End}{\End}
-    \DeclareMathCommand{\Homomorphism}{Hom}{\Hom}
-    \DeclareMathCommand{\GgeneralLinearGroup}{GL}{\GL}
-    \DeclareMathCommand{\Kernel}{Ker}{\Ker}
-    \DeclareMathCommand{\Mapping}{Map}{\Map}
-    \DeclareMathCommand{\LinearSpan}{Span}{\Span}
-    \DeclareMathCommand{\StabilizerSubgroup}{Stab}{\Stab}
+  \DeclareDocumentCommand\tr{}{\trigbraces{\trace}}
+  \DeclareDocumentCommand\dom{}{\trigbraces{\operatorname{dom}}}
+  \DeclareDocumentCommand\ord{}{\trigbraces{\operatorname{ord}}}
+  \DeclareDocumentCommand\sign{}{\trigbraces{\operatorname{sgn}}}
+  \DeclareDocumentCommand\sinc{}{\trigbraces{\operatorname{sinc}}}
+  \DeclareDocumentCommand\ran{}{\trigbraces{\operatorname{ran}}}
+  \DeclareDocumentCommand\Aut{}{\trigbraces{\operatorname{Aut}}}
+  \DeclareDocumentCommand\End{}{\trigbraces{\operatorname{End}}}
+  \DeclareDocumentCommand\Hom{}{\trigbraces{\operatorname{Hom}}}
+  \DeclareDocumentCommand\GL{}{\trigbraces{\operatorname{GL}}}
+  \DeclareDocumentCommand\Im{}{\trigbraces{\operatorname{Im}}}
+  \DeclareDocumentCommand\Ker{}{\trigbraces{\operatorname{Ker}}}
+  \DeclareDocumentCommand\Map{}{\trigbraces{\operatorname{Map}}}
+  \DeclareDocumentCommand\Re{}{\trigbraces{\operatorname{Re}}}
+  \DeclareDocumentCommand\Span{}{\trigbraces{\operatorname{Span}}}
+  \DeclareDocumentCommand\Stab{}{\trigbraces{\operatorname{Stab}}}
 
 \makeatother
