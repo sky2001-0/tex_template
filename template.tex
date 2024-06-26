@@ -14,6 +14,7 @@
 \usepackage{bm, bbm} % package for bold style
 \usepackage{wrapfig} % package for figure of the text wrapping around
 \usepackage{appendix} % package for appendix
+\usepackage{xparse} % package for difinition of new command
 
 
 \geometry{left=20truemm, right=20truemm, top=20truemm, bottom=20truemm}
@@ -129,18 +130,20 @@
   \newcommand{\referbook}[4]{\bibitem{#2} #1, \textit{#2}. #3 (#4).} % arguments means 'author', 'title', 'publisher', 'year'
   \newcommand{\referthesis}[5]{\bibitem{#2} #1, \textit{#2}. #3, #4 (#5).} % arguments means 'author', 'title', 'type', 'publisher', 'year'
 
-  \DeclareMathOperator{\diag}{diag}
-  \DeclareMathOperator{\dom}{dom}
-  \DeclareMathOperator{\id}{id}
-  \DeclareMathOperator{\ord}{ord}
-  \DeclareMathOperator{\ran}{ran}
-  \DeclareMathOperator{\sign}{sign}
-  \DeclareMathOperator{\Aut}{Aut}
-  \DeclareMathOperator{\End}{End}
-  \DeclareMathOperator{\Hom}{Hom}
-  \DeclareMathOperator{\GL}{GL}
-  \DeclareMathOperator{\Ker}{Ker}
-  \DeclareMathOperator{\Map}{Map}
-  \DeclareMathOperator{\Span}{Span}
-  \DeclareMathOperator{\Stab}{Stab}
+  \DeclareDocumentCommand\exp{}{\trigbraces{\exponential}}
+  \newcommand{\DeclareMathCommand}[3]{\DeclareMathOperator{#1}{#2} \DeclareDocumentCommand#3{}{\trigbraces{#1}}}
+    \DeclareMathCommand{\domain}{dom}{\dom}
+    \DeclareMathCommand{\grouporder}{ord}{\ord}
+    \DeclareMathCommand{\signum}{sign}{\sign}
+    \DeclareMathCommand{\sinecardinal}{sinc}{\sinc}
+    \DeclareMathCommand{\range}{range}{\ran}
+    \DeclareMathCommand{\Automorphism}{Aut}{\Aut}
+    \DeclareMathCommand{\Endomorphism}{End}{\End}
+    \DeclareMathCommand{\Homomorphism}{Hom}{\Hom}
+    \DeclareMathCommand{\GgeneralLinearGroup}{GL}{\GL}
+    \DeclareMathCommand{\Kernel}{Ker}{\Ker}
+    \DeclareMathCommand{\Mapping}{Map}{\Map}
+    \DeclareMathCommand{\LinearSpan}{Span}{\Span}
+    \DeclareMathCommand{\StabilizerSubgroup}{Stab}{\Stab}
+
 \makeatother
