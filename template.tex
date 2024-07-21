@@ -40,16 +40,17 @@
   \newcommand{\eins}{\mathbbm{1}}
   \newcommand{\zeros}{\mathbb{O}}
   \newcommand{\otherwise}{\text{otherwise}}
-  \newcommand{\lpartial}{\overleftarrow{\partial}}
   \newcommand{\hc}{\mathrm{h. c.}}
   \newcommand{\pars}{\vskip\baselineskip}
 
   \renewcommand{\bar}[1]{\overline{#1}}
   \newcommand{\id}[1]{\mathrm{id}_{#1}}
+  \newcommand{\lpartial}[1]{\overleftarrow{\partial_{#1}}}
+  \newcommand{\lrpartial}[1]{\overleftrightarrow{\partial_{#1}}}
   \newcommand{\rot}[1]{\curl{#1}}
+  \newcommand{\sqty}[1]{\left] #1 \right[}
   \renewcommand{\tilde}[1]{\widetilde{#1}}
   \newcommand{\tp}[1]{\, ^t \! #1}
-  \newcommand{\sqty}[1]{\left] #1 \right[}
 
   \ifthenelse{\isundefined{\chapter}}{}{
     \newcommand{\lchapter}{\@ifstar{\schapter}{\achapter}}
