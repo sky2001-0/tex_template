@@ -16,12 +16,14 @@
 \usepackage{appendix} % package for appendix
 \usepackage{xparse} % package for difinition of new command
 \usepackage[version=4]{mhchem} % package for chemistry such as atomic number
-
+\usepackage[hang, small, bf]{caption} % package for caption
+\usepackage[subrefformat=parens]{subcaption} % package for subcaption
 
 \geometry{left=20truemm, right=20truemm, top=20truemm, bottom=20truemm}
 \mathtoolsset{showonlyrefs=true} % numbering only referred equation
 \allowdisplaybreaks[4] % go new page in align environment
 \theoremstyle{plain} % in theorem, only headline is bold style
+\captionsetup{compatibility=false} % stabilize the behavior of the 'caption' package
 
 
 \makeatletter
@@ -108,6 +110,8 @@
     \newcommand{\aeqa}[2]{\begin{align} #2 \label{eq:#1} \end{align}}
     \newcommand{\seqa}[1]{\begin{align} #1 \end{align}}
   \newcommand{\eqf}[1]{\footnotesize \begin{align} #1 \end{align} \normalsize}
+
+  \newcommand{\capt}[2]{\caption{#1} \small \vspace{-15pt} \center{#2} \normalsize}
 
   \newcommand{\eqnref}{\@ifstar{\seqnref}{\aeqnref}}
     \newcommand{\seqnref}[1]{\eqref{eq:#1}}
