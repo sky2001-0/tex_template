@@ -24,135 +24,164 @@
 \allowdisplaybreaks[4] % go new page in align environment
 \theoremstyle{plain} % in theorem, only headline is bold style
 \captionsetup{compatibility=false} % stabilize the behavior of the 'caption' package
+% \includecomment{comment} % to decide whether showing comments
+
 
 
 \makeatletter
-  \newcommand{\N}{\mathbb{N}}
-  \newcommand{\Z}{\mathbb{Z}}
-  \newcommand{\Q}{\mathbb{Q}}
-  \newcommand{\R}{\mathbb{R}}
-  \newcommand{\C}{\mathbb{C}}
-  \renewcommand{\P}{\mathfrak{P}}
-  \renewcommand{\S}{\mathfrak{S}}
-  \newcommand{\sand}{\, \land \,}
-  \newcommand{\sor}{\, \lor \,}
-  \newcommand{\sto}{\, \Rightarrow \,}
-  \newcommand{\siff}{\, \Leftrightarrow \,}
-  \newcommand{\defiff}{\ratio \leftrightarrow}
-  \newcommand{\eins}{\mathbbm{1}}
-  \newcommand{\zeros}{\mathbb{O}}
-  \newcommand{\otherwise}{\text{otherwise}}
-  \newcommand{\hc}{\mathrm{h. c.}}
-  \newcommand{\pars}{\vskip\baselineskip}
-  \newcommand{\etal}{\textit{et al.}}
 
-  \renewcommand{\bar}[1]{\overline{#1}}
-  \newcommand{\id}[1]{\mathrm{id}_{#1}}
-  \newcommand{\lpartial}[1]{\overleftarrow{\partial_{#1}}}
-  \newcommand{\lrpartial}[1]{\overleftrightarrow{\partial_{#1}}}
-  \newcommand{\rot}[1]{\curl{#1}}
-  \newcommand{\sqty}[1]{\left] #1 \right[}
-  \renewcommand{\tilde}[1]{\widetilde{#1}}
-  \newcommand{\tp}[1]{\, ^t \! #1}
 
-  \ifthenelse{\isundefined{\chapter}}{}{
-    \newcommand{\lchapter}{\@ifstar{\schapter}{\achapter}}
-      \newcommand{\achapter}[1]{\chapter{#1} \label{chap:#1}}
-      \newcommand{\schapter}[1]{\chapter*{#1} \label{chap:#1}}
-  }
-  \newcommand{\lsection}{\@ifstar{\ssection}{\asection}}
-    \newcommand{\asection}[1]{\section{#1} \label{sec:#1}}
-    \newcommand{\ssection}[1]{\section*{#1} \label{sec:#1}}
-  \newcommand{\lsubsection}{\@ifstar{\ssubsection}{\asubsection}}
-    \newcommand{\asubsection}[1]{\subsection{#1} \label{subsec:#1}}
-    \newcommand{\ssubsection}[1]{\subsection*{#1} \label{subsec:#1}}
-  \newcommand{\lsectionf}{\@ifstar{\ssectionf}{\asectionf}}
-    \newcommand{\asectionf}[2]{\section{#1} \label{sec:#2}}
-    \newcommand{\ssectionf}[2]{\section*{#1} \label{sec:#2}}
-  \newcommand{\lsubsectionf}{\@ifstar{\ssubsectionf}{\asubsectionf}}
-    \newcommand{\asubsectionf}[2]{\subsection{#1} \label{subsec:#2}}
-    \newcommand{\ssubsectionf}[2]{\subsection*{#1} \label{subsec:#2}}
+% labelled sections
 
-  \newtheorem{axiom}{  \textit{Ax.}}[subsection]
-  \newcommand{\axi}[2]{\begin{axiom} \textbf{#1} \par #2 \label{ax:#1} \end{axiom} \, \par}
-    \newcommand{\axif}[3]{\begin{axiom} \textbf{#1} \par #3 \label{ax:#2} \end{axiom} \, \par}
-  \newtheorem{definition}{  \textit{Def.}}[subsection]
-  \newcommand{\dfn}[2]{\begin{definition} \textbf{#1} \par #2 \label{def:#1} \end{definition} \, \par}
-    \newcommand{\dfnf}[3]{\begin{definition} \textbf{#1} \par #3 \label{def:#2} \end{definition} \, \par}
-  \newtheorem{theorem}{  \textit{Thm.}}[subsection]
-  \newcommand{\thm}{\@ifstar{\sthm}{\athm}}
-    \newcommand{\sthm}[2]{\begin{theorem} \, \par #1 \label{thm:\thetheorem} \begin{proof} \, \par #2 \end{proof} \end{theorem} \, \par}
-    \newcommand{\athm}[3]{\begin{theorem} \textbf{#1} \par #2 \label{thm:#1} \begin{proof} \, \par #3 \end{proof} \end{theorem} \, \par}
-    \newcommand{\thmf}[4]{\begin{theorem} \textbf{#1} \par #3 \label{thm:#2} \begin{proof} \, \par #4 \end{proof} \end{theorem} \, \par}
-  \newtheorem{corollary}[theorem]{  \textit{Cor.}}
-  \newcommand{\cor}{\@ifstar{\scor}{\acor}}
-    \newcommand{\scor}[1]{\begin{corollary} \, \par #1 \label{cor:\thetheorem} \end{corollary} \, \par}
-    \newcommand{\acor}[2]{\begin{corollary} \textbf{#1} \par #2 \label{cor:#1} \end{corollary} \, \par}
-    \newcommand{\corf}[3]{\begin{corollary} \textbf{#1} \par #3 \label{cor:#2} \end{corollary} \, \par}
-  \newtheorem{lemma}[theorem]{  \textit{Lem.}}
-  \newcommand{\lem}{\@ifstar{\slem}{\alem}}
-    \newcommand{\slem}[2]{\begin{lemma} \, \par #1 \label{lem:\thetheorem} \begin{proof} \, \par #2 \end{proof} \end{lemma} \, \par}
-    \newcommand{\alem}[3]{\begin{lemma} \textbf{#1} \par #2 \label{lem:#1} \begin{proof} \, \par #3 \end{proof} \end{lemma} \, \par}
-    \newcommand{\lemf}[4]{\begin{lemma} \textbf{#1} \par #3 \label{lem:#2} \begin{proof} \, \par #4 \end{proof} \end{lemma} \, \par}
-  \newtheorem{remark}{  \textit{Rem.}}[subsection]
-  \newcommand{\rem}[2]{\begin{remark} \textbf{#1} \par #2 \label{rem:#1} \end{remark} \, \par}
-    \newcommand{\remf}[3]{\begin{remark} \textbf{#1} \par #3 \label{rem:#2} \end{remark} \, \par}
-  \renewcommand{\qed}{\unskip\nobreak\quad\qedsymbol}
-  \renewcommand{\qedsymbol}{$\blacksquare$}
+\ifthenelse{\isundefined{\chapter}}{}{
+  \newcommand{\lchapter}{\@ifstar{\schapter}{\achapter}}
+    \newcommand{\achapter}[1]{\chapter{#1} \label{chap:#1}}
+    \newcommand{\schapter}[1]{\chapter*{#1} \label{chap:#1}}
+}
+\newcommand{\lsection}{\@ifstar{\ssection}{\asection}}
+  \newcommand{\asection}[1]{\section{#1} \label{sec:#1}}
+  \newcommand{\ssection}[1]{\section*{#1} \label{sec:#1}}
+\newcommand{\lsubsection}{\@ifstar{\ssubsection}{\asubsection}}
+  \newcommand{\asubsection}[1]{\subsection{#1} \label{subsec:#1}}
+  \newcommand{\ssubsection}[1]{\subsection*{#1} \label{subsec:#1}}
+\newcommand{\lsectionf}{\@ifstar{\ssectionf}{\asectionf}}
+  \newcommand{\asectionf}[2]{\section{#1} \label{sec:#2}}
+  \newcommand{\ssectionf}[2]{\section*{#1} \label{sec:#2}}
+\newcommand{\lsubsectionf}{\@ifstar{\ssubsectionf}{\asubsectionf}}
+  \newcommand{\asubsectionf}[2]{\subsection{#1} \label{subsec:#2}}
+  \newcommand{\ssubsectionf}[2]{\subsection*{#1} \label{subsec:#2}}
 
-  \newcommand{\eq}{\@ifstar{\seq}{\aeq}}
-    \newcommand{\aeq}[2]{\begin{equation} \label{eq:#1} #2 \end{equation}}
-    \newcommand{\seq}[1]{\begin{equation*} #1 \end{equation*}}
-  \newcommand{\eqg}{\@ifstar{\seqg}{\aeqg}}
-    \newcommand{\aeqg}[2]{\begin{gather} #2 \label{eq:#1} \end{gather}}
-    \newcommand{\seqg}[1]{\begin{gather} #1 \end{gather}}
-  \newcommand{\eqa}{\@ifstar{\seqa}{\aeqa}}
-    \newcommand{\aeqa}[2]{\begin{align} #2 \label{eq:#1} \end{align}}
-    \newcommand{\seqa}[1]{\begin{align} #1 \end{align}}
-  \newcommand{\eqf}[1]{\footnotesize \begin{align} #1 \end{align} \normalsize}
+% new environments
 
-  \newcommand{\capt}[2]{\caption{#1} \small \vspace{-15pt} \center{#2} \normalsize}
+\newcommand{\eq}{\@ifstar{\seq}{\aeq}}
+  \newcommand{\aeq}[2]{\begin{equation} \label{eq:#1} #2 \end{equation}}
+  \newcommand{\seq}[1]{\begin{equation*} #1 \end{equation*}}
+\newcommand{\eqg}{\@ifstar{\seqg}{\aeqg}}
+  \newcommand{\aeqg}[2]{\begin{gather} #2 \label{eq:#1} \end{gather}}
+  \newcommand{\seqg}[1]{\begin{gather} #1 \end{gather}}
+\newcommand{\eqa}{\@ifstar{\seqa}{\aeqa}}
+  \newcommand{\aeqa}[2]{\begin{align} #2 \label{eq:#1} \end{align}}
+  \newcommand{\seqa}[1]{\begin{align} #1 \end{align}}
+\newcommand{\eqf}{\@ifstar{\seqf}{\aeqf}}
+  \newcommand{\aeqf}[2]{\footnotesize \begin{align} #2 \label{eq:#1} \end{align} \normalsize}
+  \newcommand{\seqf}[2]{\footnotesize \begin{align} #1 \end{align} \normalsize}
 
-  \newcommand{\eqnref}{\@ifstar{\seqnref}{\aeqnref}}
-    \newcommand{\seqnref}[1]{\eqref{eq:#1}}
-    \newcommand{\aeqnref}[1]{式~\eqref{eq:#1}}
-  \newcommand{\figref}[1]{（図~\ref{fig:#1}）}
-  \ifthenelse{\isundefined{\chapter}}{}{
-    \newcommand{\chapref}[1]{第\ref{chap:#1}章}
-  }
-  \newcommand{\secref}[1]{節~\ref{sec:#1}}
-  \newcommand{\subsecref}[1]{小節~\ref{subsec:#1}}
-  \newcommand{\axiref}[1]{公理~\ref{ax:#1}}
-  \newcommand{\dfnref}[1]{定義~\ref{def:#1}}
-  \newcommand{\thmref}[1]{定理~\ref{thm:#1}}
-  \newcommand{\corref}[1]{系~\ref{cor:#1}}
-  \newcommand{\lemref}[1]{補題~\ref{lem:#1}}
-  \newcounter{tmp}
-  \newcommand{\mthmref}[1]{\setcounter{tmp}{\value{theorem}}\addtocounter{tmp}{#1}\thetmp}%\thmref{\thesubsection.\thetmp}}
-  \newcommand{\mlemref}[1]{\setcounter{tmp}{\value{theorem}}\addtocounter{tmp}{#1}\lemref{\thesubsection.\thetmp}}
+\newtheorem{axiom}{  \textit{Ax.}}[subsection]
+\newcommand{\axi}[2]{\begin{axiom} \textbf{#1} \par #2 \label{ax:#1} \end{axiom} \, \par}
+  \newcommand{\axif}[3]{\begin{axiom} \textbf{#1} \par #3 \label{ax:#2} \end{axiom} \, \par}
+\newtheorem{definition}{  \textit{Def.}}[subsection]
+\newcommand{\dfn}[2]{\begin{definition} \textbf{#1} \par #2 \label{def:#1} \end{definition} \, \par}
+  \newcommand{\dfnf}[3]{\begin{definition} \textbf{#1} \par #3 \label{def:#2} \end{definition} \, \par}
+\newtheorem{theorem}{  \textit{Thm.}}[subsection]
+\newcommand{\thm}{\@ifstar{\sthm}{\athm}}
+  \newcommand{\sthm}[2]{\begin{theorem} \, \par #1 \label{thm:\thetheorem} \begin{proof} \, \par #2 \end{proof} \end{theorem} \, \par}
+  \newcommand{\athm}[3]{\begin{theorem} \textbf{#1} \par #2 \label{thm:#1} \begin{proof} \, \par #3 \end{proof} \end{theorem} \, \par}
+  \newcommand{\thmf}[4]{\begin{theorem} \textbf{#1} \par #3 \label{thm:#2} \begin{proof} \, \par #4 \end{proof} \end{theorem} \, \par}
+\newtheorem{corollary}[theorem]{  \textit{Cor.}}
+\newcommand{\cor}{\@ifstar{\scor}{\acor}}
+  \newcommand{\scor}[1]{\begin{corollary} \, \par #1 \label{cor:\thetheorem} \end{corollary} \, \par}
+  \newcommand{\acor}[2]{\begin{corollary} \textbf{#1} \par #2 \label{cor:#1} \end{corollary} \, \par}
+  \newcommand{\corf}[3]{\begin{corollary} \textbf{#1} \par #3 \label{cor:#2} \end{corollary} \, \par}
+\newtheorem{lemma}[theorem]{  \textit{Lem.}}
+\newcommand{\lem}{\@ifstar{\slem}{\alem}}
+  \newcommand{\slem}[2]{\begin{lemma} \, \par #1 \label{lem:\thetheorem} \begin{proof} \, \par #2 \end{proof} \end{lemma} \, \par}
+  \newcommand{\alem}[3]{\begin{lemma} \textbf{#1} \par #2 \label{lem:#1} \begin{proof} \, \par #3 \end{proof} \end{lemma} \, \par}
+  \newcommand{\lemf}[4]{\begin{lemma} \textbf{#1} \par #3 \label{lem:#2} \begin{proof} \, \par #4 \end{proof} \end{lemma} \, \par}
+\newtheorem{remark}{  \textit{Rem.}}[subsection]
+\newcommand{\rem}[2]{\begin{remark} \textbf{#1} \par #2 \label{rem:#1} \end{remark} \, \par}
+  \newcommand{\remf}[3]{\begin{remark} \textbf{#1} \par #3 \label{rem:#2} \end{remark} \, \par}
 
-  \newcommand{\refer}[6]{\bibitem{#2} #1, \textit{#2}. #3 \textbf{#4}, #5 (#6).} % arguments means 'author', 'title', 'publisher', 'volume', 'page', 'year'
-  \newcommand{\referf}[7]{\bibitem{#7} #1, \textit{#2}. #3 \textbf{#4}, #5 (#6).} % arguments means 'author', 'title', 'publisher', 'volume', 'page', 'year', 'label'
-  \newcommand{\referbook}[4]{\bibitem{#2} #1, \textit{#2}. #3 (#4).} % arguments means 'author', 'title', 'publisher', 'year'
-  \newcommand{\referthesis}[5]{\bibitem{#2} #1, \textit{#2}. #3, #4 (#5).} % arguments means 'author', 'title', 'type', 'publisher', 'year'
+% math or some symbols
 
-  \DeclareDocumentCommand\exp{}{\trigbraces{\exponential}}
-  \DeclareDocumentCommand\tr{}{\trigbraces{\trace}}
-  \DeclareDocumentCommand\diag{}{\opbraces{\operatorname{diag}}}
-  \DeclareDocumentCommand\dom{}{\trigbraces{\operatorname{dom}}}
-  \DeclareDocumentCommand\ord{}{\trigbraces{\operatorname{ord}}}
-  \DeclareDocumentCommand\sign{}{\trigbraces{\operatorname{sgn}}}
-  \DeclareDocumentCommand\sinc{}{\trigbraces{\operatorname{sinc}}}
-  \DeclareDocumentCommand\ran{}{\trigbraces{\operatorname{ran}}}
-  \DeclareDocumentCommand\Aut{}{\trigbraces{\operatorname{Aut}}}
-  \DeclareDocumentCommand\End{}{\trigbraces{\operatorname{End}}}
-  \DeclareDocumentCommand\Hom{}{\trigbraces{\operatorname{Hom}}}
-  \DeclareDocumentCommand\GL{}{\trigbraces{\operatorname{GL}}}
-  \DeclareDocumentCommand\Im{}{\trigbraces{\operatorname{Im}}}
-  \DeclareDocumentCommand\Ker{}{\trigbraces{\operatorname{Ker}}}
-  \DeclareDocumentCommand\Map{}{\trigbraces{\operatorname{Map}}}
-  \DeclareDocumentCommand\Re{}{\trigbraces{\operatorname{Re}}}
-  \DeclareDocumentCommand\Span{}{\trigbraces{\operatorname{Span}}}
-  \DeclareDocumentCommand\Stab{}{\trigbraces{\operatorname{Stab}}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\renewcommand{\P}{\mathfrak{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\S}{\mathfrak{S}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\defiff}{\ratio \leftrightarrow}
+\newcommand{\eins}{\mathbbm{1}}
+\newcommand{\etal}{\textit{et al.}}
+\newcommand{\hc}{\mathrm{h. c.}}
+\newcommand{\otherwise}{\text{otherwise}}
+\newcommand{\pars}{\vskip\baselineskip}
+\renewcommand{\qed}{\unskip\nobreak\quad\qedsymbol}
+\renewcommand{\qedsymbol}{$\blacksquare$}
+\newcommand{\sand}{\, \land \,}
+\newcommand{\siff}{\, \Leftrightarrow \,}
+\newcommand{\sor}{\, \lor \,}
+\newcommand{\sto}{\, \Rightarrow \,}
+\newcommand{\zeros}{\mathbb{O}}
+
+% math operator
+
+\renewcommand{\bar}[1]{\overline{#1}}
+\newcommand{\id}[1]{\mathrm{id}_{#1}}
+\newcommand{\lpartial}[1]{\overleftarrow{\partial_{#1}}}
+\newcommand{\lrpartial}[1]{\overleftrightarrow{\partial_{#1}}}
+\newcommand{\rot}[1]{\curl{#1}}
+\newcommand{\sqty}[1]{\left] #1 \right[}
+\renewcommand{\tilde}[1]{\widetilde{#1}}
+\newcommand{\tp}[1]{\, ^t \! #1}
+
+\DeclareDocumentCommand\exp{}{\trigbraces{\exponential}}
+\DeclareDocumentCommand\tr{}{\trigbraces{\trace}}
+\DeclareDocumentCommand\diag{}{\opbraces{\operatorname{diag}}}
+\DeclareDocumentCommand\dom{}{\trigbraces{\operatorname{dom}}}
+\DeclareDocumentCommand\ord{}{\trigbraces{\operatorname{ord}}}
+\DeclareDocumentCommand\sign{}{\trigbraces{\operatorname{sgn}}}
+\DeclareDocumentCommand\sinc{}{\trigbraces{\operatorname{sinc}}}
+\DeclareDocumentCommand\ran{}{\trigbraces{\operatorname{ran}}}
+\DeclareDocumentCommand\Aut{}{\trigbraces{\operatorname{Aut}}}
+\DeclareDocumentCommand\End{}{\trigbraces{\operatorname{End}}}
+\DeclareDocumentCommand\Hom{}{\trigbraces{\operatorname{Hom}}}
+\DeclareDocumentCommand\GL{}{\trigbraces{\operatorname{GL}}}
+\DeclareDocumentCommand\Im{}{\trigbraces{\operatorname{Im}}}
+\DeclareDocumentCommand\Ker{}{\trigbraces{\operatorname{Ker}}}
+\DeclareDocumentCommand\Map{}{\trigbraces{\operatorname{Map}}}
+\DeclareDocumentCommand\Re{}{\trigbraces{\operatorname{Re}}}
+\DeclareDocumentCommand\Span{}{\trigbraces{\operatorname{Span}}}
+\DeclareDocumentCommand\Stab{}{\trigbraces{\operatorname{Stab}}}
+
+% some operator
+
+\newcommand{\captf}{\@ifstar{\scaptf}{\acaptf}}
+  \newcommand{\acaptf}[2]{\makeatletter \def\@captype{figure} \makeatother \caption{#1} \small \vspace{-15pt} \center{#2} \normalsize}
+  \newcommand{\scaptf}[1]{\makeatletter \def\@captype{figure} \makeatother \caption{#1}}
+\newcommand{\captt}{\@ifstar{\scaptt}{\acaptt}}
+  \newcommand{\acaptt}[2]{\makeatletter \def\@captype{table} \makeatother \caption{#1} \small \vspace{-15pt} \center{#2} \normalsize}
+  \newcommand{\scaptt}[1]{\makeatletter \def\@captype{table} \makeatother \caption{#1}}
+
+% for references
+
+\ifthenelse{\isundefined{\chapter}}{}{
+  \newcommand{\chapref}[1]{第\ref{chap:#1}章}
+}
+\newcommand{\secref}[1]{節~\ref{sec:#1}}
+\newcommand{\subsecref}[1]{小節~\ref{subsec:#1}}
+
+\newcommand{\eqnref}{\@ifstar{\seqnref}{\aeqnref}}
+  \newcommand{\seqnref}[1]{\eqref{eq:#1}}
+  \newcommand{\aeqnref}[1]{式~\eqref{eq:#1}}
+\newcommand{\figref}[1]{（図~\ref{fig:#1}）}
+\newcommand{\tabref}[1]{（表~\ref{tab:#1}）}
+
+\newcommand{\axiref}[1]{公理~\ref{ax:#1}}
+\newcommand{\dfnref}[1]{定義~\ref{def:#1}}
+\newcommand{\thmref}[1]{定理~\ref{thm:#1}}
+\newcommand{\corref}[1]{系~\ref{cor:#1}}
+\newcommand{\lemref}[1]{補題~\ref{lem:#1}}
+
+\newcounter{tmp}
+\newcommand{\mthmref}[1]{\setcounter{tmp}{\value{theorem}} \addtocounter{tmp}{#1} \thmref{\thesubsection.\thetmp}}
+\newcommand{\mlemref}[1]{\setcounter{tmp}{\value{theorem}} \addtocounter{tmp}{#1} \lemref{\thesubsection.\thetmp}}
+
+\newcommand{\refer}[6]{\bibitem{#2} #1, \textit{#2}. #3 \textbf{#4}, #5 (#6).} % arguments means 'author', 'title', 'publisher', 'volume', 'page', 'year'
+\newcommand{\referf}[7]{\bibitem{#7} #1, \textit{#2}. #3 \textbf{#4}, #5 (#6).} % arguments means 'author', 'title', 'publisher', 'volume', 'page', 'year', 'label'
+\newcommand{\referbook}[4]{\bibitem{#2} #1, \textit{#2}. #3 (#4).} % arguments means 'author', 'title', 'publisher', 'year'
+\newcommand{\referthesis}[5]{\bibitem{#2} #1, \textit{#2}. #3, #4 (#5).} % arguments means 'author', 'title', 'type', 'publisher', 'year'
+
 
 \makeatother
