@@ -22,7 +22,7 @@
 \geometry{left=20truemm, right=20truemm, top=20truemm, bottom=20truemm}
 \mathtoolsset{showonlyrefs=true} % numbering only referred equation
 \allowdisplaybreaks[4] % go new page in align environment
-\theoremstyle{plain} % in theorem, only headline is bold style
+\theoremstyle{definition} % in theorem, only headline is bold style
 \captionsetup{compatibility=false} % stabilize the behavior of the 'caption' package
 % \includecomment{comment} % to decide whether showing comments
 
@@ -74,9 +74,9 @@
   \newcommand{\dfnf}[3]{\begin{definition} \textbf{#1} \par #3 \label{def:#2} \end{definition} \, \par}
 \newtheorem{theorem}{  \textit{Thm.}}[subsection]
 \newcommand{\thm}{\@ifstar{\sthm}{\athm}}
-  \newcommand{\sthm}[2]{\begin{theorem} \, \par #1 \label{thm:\thetheorem} \begin{proof} \, \par #2 \end{proof} \end{theorem} \, \par}
-  \newcommand{\athm}[3]{\begin{theorem} \textbf{#1} \par #2 \label{thm:#1} \begin{proof} \, \par #3 \end{proof} \end{theorem} \, \par}
-  \newcommand{\thmf}[4]{\begin{theorem} \textbf{#1} \par #3 \label{thm:#2} \begin{proof} \, \par #4 \end{proof} \end{theorem} \, \par}
+  \newcommand{\sthm}[2]{\begin{theorem} \, \par #1 \label{thm:\thetheorem} \end{theorem} \begin{proof} \, \par #2 \end{proof} \, \par}
+  \newcommand{\athm}[3]{\begin{theorem} \textbf{#1} \par #2 \label{thm:#1} \end{theorem} \begin{proof} \, \par #3 \end{proof} \, \par}
+  \newcommand{\thmf}[4]{\begin{theorem} \textbf{#1} \par #3 \label{thm:#2} \end{theorem} \begin{proof} \, \par #4 \end{proof} \, \par}
 \newtheorem{corollary}[theorem]{  \textit{Cor.}}
 \newcommand{\cor}{\@ifstar{\scor}{\acor}}
   \newcommand{\scor}[1]{\begin{corollary} \, \par #1 \label{cor:\thetheorem} \end{corollary} \, \par}
@@ -84,9 +84,9 @@
   \newcommand{\corf}[3]{\begin{corollary} \textbf{#1} \par #3 \label{cor:#2} \end{corollary} \, \par}
 \newtheorem{lemma}[theorem]{  \textit{Lem.}}
 \newcommand{\lem}{\@ifstar{\slem}{\alem}}
-  \newcommand{\slem}[2]{\begin{lemma} \, \par #1 \label{lem:\thetheorem} \begin{proof} \, \par #2 \end{proof} \end{lemma} \, \par}
-  \newcommand{\alem}[3]{\begin{lemma} \textbf{#1} \par #2 \label{lem:#1} \begin{proof} \, \par #3 \end{proof} \end{lemma} \, \par}
-  \newcommand{\lemf}[4]{\begin{lemma} \textbf{#1} \par #3 \label{lem:#2} \begin{proof} \, \par #4 \end{proof} \end{lemma} \, \par}
+  \newcommand{\slem}[2]{\begin{lemma} \, \par #1 \label{lem:\thetheorem} \end{lemma} \begin{proof} \, \par #2 \end{proof} \, \par}
+  \newcommand{\alem}[3]{\begin{lemma} \textbf{#1} \par #2 \label{lem:#1} \end{lemma} \begin{proof} \, \par #3 \end{proof} \, \par}
+  \newcommand{\lemf}[4]{\begin{lemma} \textbf{#1} \par #3 \label{lem:#2} \end{lemma} \begin{proof} \, \par #4 \end{proof} \, \par}
 \newtheorem{remark}{  \textit{Rem.}}[subsection]
 \newcommand{\rem}[2]{\begin{remark} \textbf{#1} \par #2 \label{rem:#1} \end{remark} \, \par}
   \newcommand{\remf}[3]{\begin{remark} \textbf{#1} \par #3 \label{rem:#2} \end{remark} \, \par}
@@ -125,8 +125,9 @@
 \newcommand{\rot}[1]{\curl{#1}}
 \newcommand{\sqty}[1]{\left] #1 \right[}
 \renewcommand{\tilde}[1]{\widetilde{#1}}
-\newcommand{\tp}[1]{\, ^t \! #1}
+\newcommand{\tp}[1]{\,^t\!#1}
 
+\DeclareDocumentCommand\P{}{\trigbraces{\mathfrak{P}}}
 \DeclareDocumentCommand\erf{}{\trigbraces{\operatorname{erf}}}
 \DeclareDocumentCommand\exp{}{\trigbraces{\exponential}}
 \DeclareDocumentCommand\tr{}{\trigbraces{\trace}}
@@ -150,11 +151,11 @@
 % some operator
 
 \newcommand{\captf}{\@ifstar{\scaptf}{\acaptf}}
-  \newcommand{\acaptf}[2]{\makeatletter \def\@captype{figure} \makeatother \caption{#1} \small \vspace{-15pt} \center{#2} \normalsize}
-  \newcommand{\scaptf}[1]{\makeatletter \def\@captype{figure} \makeatother \caption{#1}}
+  \newcommand{\acaptf}[2]{\makeatletter\def\@captype{figure}\makeatother\caption{#1}\small\vspace{-15pt}\center{#2}\normalsize}
+  \newcommand{\scaptf}[1]{\makeatletter\def\@captype{figure}\makeatother\caption{#1}}
 \newcommand{\captt}{\@ifstar{\scaptt}{\acaptt}}
-  \newcommand{\acaptt}[2]{\makeatletter \def\@captype{table} \makeatother \caption{#1} \small \vspace{-15pt} \center{#2} \normalsize}
-  \newcommand{\scaptt}[1]{\makeatletter \def\@captype{table} \makeatother \caption{#1}}
+  \newcommand{\acaptt}[2]{\makeatletter\def\@captype{table}\makeatother\caption{#1}\small\vspace{-15pt}\center{#2}\normalsize}
+  \newcommand{\scaptt}[1]{\makeatletter\def\@captype{table}\makeatother\caption{#1}}
 
 % for references
 
@@ -177,8 +178,8 @@
 \newcommand{\lemref}[1]{補題~\ref{lem:#1}}
 
 \newcounter{tmp}
-\newcommand{\mthmref}[1]{\setcounter{tmp}{\value{theorem}} \addtocounter{tmp}{#1} \thmref{\thesubsection.\thetmp}}
-\newcommand{\mlemref}[1]{\setcounter{tmp}{\value{theorem}} \addtocounter{tmp}{#1} \lemref{\thesubsection.\thetmp}}
+\newcommand{\mthmref}[1]{\setcounter{tmp}{\value{theorem}}\addtocounter{tmp}{#1}\thmref{\thesubsection.\thetmp}}
+\newcommand{\mlemref}[1]{\setcounter{tmp}{\value{theorem}}\addtocounter{tmp}{#1}\lemref{\thesubsection.\thetmp}}
 
 \newcommand{\refer}[6]{\bibitem{#2} #1, \textit{#2}. #3 \textbf{#4}, #5 (#6).} % arguments means 'author', 'title', 'publisher', 'volume', 'page', 'year'
 \newcommand{\referf}[7]{\bibitem{#7} #1, \textit{#2}. #3 \textbf{#4}, #5 (#6).} % arguments means 'author', 'title', 'publisher', 'volume', 'page', 'year', 'label'
