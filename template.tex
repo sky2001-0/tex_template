@@ -37,16 +37,19 @@
   \newcommand{\lchapter}{\@ifstar{\schapter}{\achapter}}
     \newcommand{\achapter}[1]{\chapter{#1} \label{chap:#1}}
     \newcommand{\schapter}[1]{\chapter*{#1} \label{chap:#1}}
+  \newcommand{\lchapterf}{\@ifstar{\schapter}{\achapter}}
+    \newcommand{\achapterf}[2]{\chapter{#1} \label{chap:#2}}
+    \newcommand{\schapterf}[2]{\chapter*{#1} \label{chap:#2}}
 }
 \newcommand{\lsection}{\@ifstar{\ssection}{\asection}}
   \newcommand{\asection}[1]{\section{#1} \label{sec:#1}}
   \newcommand{\ssection}[1]{\section*{#1} \label{sec:#1}}
-\newcommand{\lsubsection}{\@ifstar{\ssubsection}{\asubsection}}
-  \newcommand{\asubsection}[1]{\subsection{#1} \label{subsec:#1}}
-  \newcommand{\ssubsection}[1]{\subsection*{#1} \label{subsec:#1}}
 \newcommand{\lsectionf}{\@ifstar{\ssectionf}{\asectionf}}
   \newcommand{\asectionf}[2]{\section{#1} \label{sec:#2}}
   \newcommand{\ssectionf}[2]{\section*{#1} \label{sec:#2}}
+\newcommand{\lsubsection}{\@ifstar{\ssubsection}{\asubsection}}
+  \newcommand{\asubsection}[1]{\subsection{#1} \label{subsec:#1}}
+  \newcommand{\ssubsection}[1]{\subsection*{#1} \label{subsec:#1}}
 \newcommand{\lsubsectionf}{\@ifstar{\ssubsectionf}{\asubsectionf}}
   \newcommand{\asubsectionf}[2]{\subsection{#1} \label{subsec:#2}}
   \newcommand{\ssubsectionf}[2]{\subsection*{#1} \label{subsec:#2}}
@@ -149,7 +152,7 @@
 \DeclareDocumentCommand\Span{}{\trigbraces{\operatorname{Span}}}
 \DeclareDocumentCommand\Stab{}{\trigbraces{\operatorname{Stab}}}
 
-% some operator
+% for caption
 
 \newcommand{\captf}{\@ifstar{\scaptf}{\acaptf}}
   \newcommand{\acaptf}[2]{\makeatletter\def\@captype{figure}\makeatother\caption{#1}\small\vspace{-15pt}\center{#2}\normalsize}
