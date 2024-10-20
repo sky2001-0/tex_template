@@ -13,7 +13,6 @@
 \usepackage{ifthen} % package for conditional branch
 \usepackage{bm, bbm} % package for bold style
 \usepackage{wrapfig} % package for figure of the text wrapping around
-\usepackage{appendix} % package for appendix
 \usepackage{xparse} % package for difinition of new command
 \usepackage[version=4]{mhchem} % package for chemistry such as atomic number
 \usepackage[hang, small, bf]{caption} % package for caption
@@ -190,5 +189,19 @@
 \newcommand{\referbook}[4]{\bibitem{#2} #1, \textit{#2}. #3 (#4).} % arguments means 'author', 'title', 'publisher', 'year'
 \newcommand{\referthesis}[5]{\bibitem{#2} #1, \textit{#2}. #3, #4 (#5).} % arguments means 'author', 'title', 'type', 'publisher', 'year'
 
+% for appendix
+\renewcommand{\appendix}{
+  \chapter*{付録}
+  \addcontentsline{toc}{chapter}{付録}
+
+  \setcounter{section}{0}
+  \renewcommand{\thesection}{\Alph{section}}
+  \setcounter{equation}{0}
+  \renewcommand{\theequation}{\Alph{section}.\arabic{equation}}
+  \setcounter{figure}{0}
+  \renewcommand{\thefigure}{\Alph{section}.\arabic{figure}}
+  \setcounter{table}{0}
+  \renewcommand{\thetable}{\Alph{section}.\arabic{table}}
+}
 
 \makeatother
