@@ -20,7 +20,7 @@
 
 \geometry{left=20truemm, right=20truemm, top=20truemm, bottom=20truemm}
 \mathtoolsset{showonlyrefs=true} % numbering only referred equation
-\allowdisplaybreaks[4] % go new page in align environment
+% \allowdisplaybreaks[4] % go new page in align environment
 \theoremstyle{definition} % in theorem, only headline is bold style
 \captionsetup{compatibility=false} % stabilize the behavior of the 'caption' package
 % \includecomment{comment} % to decide whether showing comments
@@ -29,29 +29,33 @@
 
 \makeatletter
 
+% for skip and space
+
+\newcommand{\skipend}{\vskip.2\baselineskip}
+\newcommand{\skippr}{\vspace{1.0em}}
 
 % labelled sections
 
 \ifthenelse{\isundefined{\chapter}}{}{
   \newcommand{\lchapter}{\@ifstar{\schapter}{\achapter}}
-    \newcommand{\achapter}[1]{\chapter{#1} \label{chap:#1}}
-    \newcommand{\schapter}[1]{\chapter*{#1} \label{chap:#1}}
+    \newcommand{\achapter}[1]{\chapter{#1} \label{chap:#1} \skipend}
+    \newcommand{\schapter}[1]{\chapter*{#1} \label{chap:#1} \skipend}
   \newcommand{\lchapterf}{\@ifstar{\schapter}{\achapter}}
-    \newcommand{\achapterf}[2]{\chapter{#1} \label{chap:#2}}
-    \newcommand{\schapterf}[2]{\chapter*{#1} \label{chap:#2}}
+    \newcommand{\achapterf}[2]{\chapter{#1} \label{chap:#2} \skipend}
+    \newcommand{\schapterf}[2]{\chapter*{#1} \label{chap:#2} \skipend}
 }
 \newcommand{\lsection}{\@ifstar{\ssection}{\asection}}
-  \newcommand{\asection}[1]{\section{#1} \label{sec:#1}}
-  \newcommand{\ssection}[1]{\section*{#1} \label{sec:#1}}
+  \newcommand{\asection}[1]{\section{#1} \label{sec:#1} \skipend}
+  \newcommand{\ssection}[1]{\section*{#1} \label{sec:#1} \skipend}
 \newcommand{\lsectionf}{\@ifstar{\ssectionf}{\asectionf}}
-  \newcommand{\asectionf}[2]{\section{#1} \label{sec:#2}}
-  \newcommand{\ssectionf}[2]{\section*{#1} \label{sec:#2}}
+  \newcommand{\asectionf}[2]{\section{#1} \label{sec:#2} \skipend}
+  \newcommand{\ssectionf}[2]{\section*{#1} \label{sec:#2} \skipend}
 \newcommand{\lsubsection}{\@ifstar{\ssubsection}{\asubsection}}
-  \newcommand{\asubsection}[1]{\subsection{#1} \label{subsec:#1}}
-  \newcommand{\ssubsection}[1]{\subsection*{#1} \label{subsec:#1}}
+  \newcommand{\asubsection}[1]{\subsection{#1} \label{subsec:#1} \skipend}
+  \newcommand{\ssubsection}[1]{\subsection*{#1} \label{subsec:#1} \skipend}
 \newcommand{\lsubsectionf}{\@ifstar{\ssubsectionf}{\asubsectionf}}
-  \newcommand{\asubsectionf}[2]{\subsection{#1} \label{subsec:#2}}
-  \newcommand{\ssubsectionf}[2]{\subsection*{#1} \label{subsec:#2}}
+  \newcommand{\asubsectionf}[2]{\subsection{#1} \label{subsec:#2} \skipend}
+  \newcommand{\ssubsectionf}[2]{\subsection*{#1} \label{subsec:#2} \skipend}
 
 % new environments
 
@@ -68,30 +72,33 @@
   \newcommand{\aeqf}[2]{\footnotesize \begin{align} #2 \label{eq:#1} \end{align} \normalsize}
   \newcommand{\seqf}[2]{\footnotesize \begin{align} #1 \end{align} \normalsize}
 
-\newtheorem{axiom}{  \textit{Ax.}}[subsection]
-\newcommand{\axi}[2]{\begin{axiom} \textbf{#1} \par #2 \label{ax:#1} \end{axiom} \, \par}
-  \newcommand{\axif}[3]{\begin{axiom} \textbf{#1} \par #3 \label{ax:#2} \end{axiom} \, \par}
-\newtheorem{definition}{  \textit{Def.}}[subsection]
-\newcommand{\dfn}[2]{\begin{definition} \textbf{#1} \par #2 \label{def:#1} \end{definition} \, \par}
-  \newcommand{\dfnf}[3]{\begin{definition} \textbf{#1} \par #3 \label{def:#2} \end{definition} \, \par}
-\newtheorem{theorem}{  \textit{Thm.}}[subsection]
+\newcommand{\theoremtmp}[1]{\vskip.5\baselineskip \begin{flushleft} \begin{minipage}{\textwidth} \parindent=1zw #1 \end{minipage} \end{flushleft}}
+
+\newtheorem{axiom}{\textit{Ax.}}[subsection]
+\newcommand{\axi}[2]{\theoremtmp{\begin{axiom} \textbf{#1} \par #2 \label{ax:#1} \end{axiom}} \skipend}
+  \newcommand{\axif}[3]{\begin{axiom} \textbf{#1} \par #3 \label{ax:#2} \end{axiom} \skipend}
+\newtheorem{definition}{\textit{Def.}}[subsection]
+\newcommand{\dfn}[2]{\theoremtmp{\begin{definition} \textbf{#1} \par #2 \label{def:#1} \end{definition}} \skipend}
+  \newcommand{\dfnf}[3]{\theoremtmp{\begin{definition} \textbf{#1} \par #3 \label{def:#2} \end{definition}} \skipend}
+\newtheorem{theorem}{\textit{Thm.}}[subsection]
 \newcommand{\thm}{\@ifstar{\sthm}{\athm}}
-  \newcommand{\sthm}[2]{\begin{theorem} \, \par #1 \label{thm:\thetheorem} \end{theorem} \begin{proof} \, \par #2 \end{proof} \, \par}
-  \newcommand{\athm}[3]{\begin{theorem} \textbf{#1} \par #2 \label{thm:#1} \end{theorem} \begin{proof} \, \par #3 \end{proof} \, \par}
-  \newcommand{\thmf}[4]{\begin{theorem} \textbf{#1} \par #3 \label{thm:#2} \end{theorem} \begin{proof} \, \par #4 \end{proof} \, \par}
-\newtheorem{corollary}[theorem]{  \textit{Cor.}}
+  \newcommand{\sthm}[2]{\theoremtmp{\begin{theorem} \, \par #1 \label{thm:\thetheorem} \end{theorem}} \begin{proof} \, \par #2 \end{proof} \skippr}
+  \newcommand{\athm}[3]{\theoremtmp{\begin{theorem} \textbf{#1} \par #2 \label{thm:#1} \end{theorem}} \begin{proof} \, \par #3 \end{proof} \skippr}
+  \newcommand{\thmf}[4]{\theoremtmp{\begin{theorem} \textbf{#1} \par #3 \label{thm:#2} \end{theorem}} \begin{proof} \, \par #4 \end{proof} \skippr}
+\newtheorem{corollary}[theorem]{\textit{Cor.}}
 \newcommand{\cor}{\@ifstar{\scor}{\acor}}
-  \newcommand{\scor}[1]{\begin{corollary} \, \par #1 \label{cor:\thetheorem} \end{corollary} \, \par}
-  \newcommand{\acor}[2]{\begin{corollary} \textbf{#1} \par #2 \label{cor:#1} \end{corollary} \, \par}
-  \newcommand{\corf}[3]{\begin{corollary} \textbf{#1} \par #3 \label{cor:#2} \end{corollary} \, \par}
-\newtheorem{lemma}[theorem]{  \textit{Lem.}}
+  \newcommand{\scor}[1]{\theoremtmp{\begin{corollary} \, \par #1 \label{cor:\thetheorem} \end{corollary}} \skipend}
+  \newcommand{\acor}[2]{\theoremtmp{\begin{corollary} \textbf{#1} \par #2 \label{cor:#1} \end{corollary}} \skipend}
+  \newcommand{\corf}[3]{\theoremtmp{\begin{corollary} \textbf{#1} \par #3 \label{cor:#2} \end{corollary}} \skipend}
+\newtheorem{lemma}[theorem]{\textit{Lem.}}
 \newcommand{\lem}{\@ifstar{\slem}{\alem}}
-  \newcommand{\slem}[2]{\begin{lemma} \, \par #1 \label{lem:\thetheorem} \end{lemma} \begin{proof} \, \par #2 \end{proof} \, \par}
-  \newcommand{\alem}[3]{\begin{lemma} \textbf{#1} \par #2 \label{lem:#1} \end{lemma} \begin{proof} \, \par #3 \end{proof} \, \par}
-  \newcommand{\lemf}[4]{\begin{lemma} \textbf{#1} \par #3 \label{lem:#2} \end{lemma} \begin{proof} \, \par #4 \end{proof} \, \par}
-\newtheorem{remark}{  \textit{Rem.}}[subsection]
-\newcommand{\rem}[2]{\begin{remark} \textbf{#1} \par #2 \label{rem:#1} \end{remark} \, \par}
-  \newcommand{\remf}[3]{\begin{remark} \textbf{#1} \par #3 \label{rem:#2} \end{remark} \, \par}
+  \newcommand{\slem}[2]{\theoremtmp{\begin{lemma} \, \par #1 \label{lem:\thetheorem} \end{lemma}} \begin{proof} \, \par #2 \end{proof} \skippr}
+  \newcommand{\alem}[3]{\theoremtmp{\begin{lemma} \textbf{#1} \par #2 \label{lem:#1} \end{lemma}} \begin{proof} \, \par #3 \end{proof} \skippr}
+  \newcommand{\lemf}[4]{\theoremtmp{\begin{lemma} \textbf{#1} \par #3 \label{lem:#2} \end{lemma}} \begin{proof} \, \par #4 \end{proof} \skippr}
+\newtheorem{remark}{\textit{Rem.}}[subsection]
+\newcommand{\rem}[2]{\theoremtmp{\begin{remark} \textbf{#1} \par #2 \label{rem:#1} \end{remark}} \skipend}
+  \newcommand{\remf}[3]{\theoremtmp{\begin{remark} \textbf{#1} \par #3 \label{rem:#2} \end{remark}} \skipend}
+% \renewcommand{\proofname}{\textit{Proof.}}
 
 % math or some symbols
 
@@ -109,8 +116,6 @@
 \newcommand{\etal}{\textit{et al.}}
 \newcommand{\hc}{\mathrm{h. c.}}
 \newcommand{\otherwise}{\text{otherwise}}
-\newcommand{\pars}{\vskip\baselineskip}
-\renewcommand{\qed}{\unskip\nobreak\quad\qedsymbol}
 \renewcommand{\qedsymbol}{$\blacksquare$}
 \newcommand{\sand}{\, \land \,}
 \newcommand{\siff}{\, \Leftrightarrow \,}
