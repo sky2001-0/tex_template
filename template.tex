@@ -182,8 +182,12 @@
 \newcommand{\eqnref}{\@ifstar{\seqnref}{\aeqnref}}
   \newcommand{\seqnref}[1]{\eqref{eq:#1}}
   \newcommand{\aeqnref}[1]{式~\eqref{eq:#1}}
-\newcommand{\figref}[1]{（図~\ref{fig:#1}）}
-\newcommand{\tabref}[1]{（表~\ref{tab:#1}）}
+\newcommand{\figref}{\@ifstar{\sfigref}{\afigref}}
+  \newcommand{\sfigref}[1]{図~\ref{fig:#1}}
+  \newcommand{\afigref}[1]{（図~\ref{fig:#1}）}
+\newcommand{\tabref}{\@ifstar{\stabref}{\atabref}}
+  \newcommand{\stabref}[1]{表~\ref{tab:#1}}
+  \newcommand{\atabref}[1]{（表~\ref{tab:#1}）}
 
 \newcommand{\axiref}[1]{公理~\ref{ax:#1}}
 \newcommand{\dfnref}[1]{定義~\ref{def:#1}}
